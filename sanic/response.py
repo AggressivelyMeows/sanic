@@ -8,15 +8,7 @@ from sanic.compat import Header, open_async
 from sanic.cookies import CookieJar
 from sanic.helpers import has_message_body, remove_entity_headers
 
-
-try:
-    from ujson import dumps as json_dumps
-except ImportError:
-    # This is done in order to ensure that the JSON response is
-    # kept consistent across both ujson and inbuilt json usage.
-    from json import dumps
-
-    json_dumps = partial(dumps, separators=(",", ":"))
+from ujson import dumps as json_dumps
 
 
 class BaseHTTPResponse:
